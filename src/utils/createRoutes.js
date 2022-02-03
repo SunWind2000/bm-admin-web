@@ -1,4 +1,4 @@
-import { asyncRoutes } from '@/router'
+import { asyncRoutes } from '../router'
 
 // 将菜单信息转成对应的路由信息 动态添加
 export default function createRoutes(data) {

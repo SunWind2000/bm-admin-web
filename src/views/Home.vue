@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { fetchUserData } from '@/api'
+import { fetchUserData } from '../api'
 
 export default {
     name: 'home',
