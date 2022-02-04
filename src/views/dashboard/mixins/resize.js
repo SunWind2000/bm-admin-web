@@ -1,4 +1,4 @@
-import { debounce } from '../../../utils/eladmin_index'
+import { debounce } from '@/utils/eladmin_index'
 
 export default {
     data() {
