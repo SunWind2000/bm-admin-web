@@ -8,6 +8,7 @@ module.exports = {
         '@vue/airbnb',
     ],
     rules: {
+        "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }],
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'array-element-newline': ['error', 'consistent'],

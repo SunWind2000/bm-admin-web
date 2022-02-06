@@ -10,7 +10,6 @@ import resize from './mixins/resize'
 require('echarts/theme/macarons')
 
 export default {
-    name: 'LineChart',
     mixins: [resize],
     props: {
         className: {

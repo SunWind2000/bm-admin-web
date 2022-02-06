@@ -1,55 +1,54 @@
 <template>
-    <el-row :gutter="40" class="panel-group">
-        <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('newVisits')">
+    <Row :gutter="40" class-name="panel-group">
+        <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+            <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
                 <div class="card-panel-icon-wrapper icon-people">
-                    <svg-icon icon-class="dashboard" class-name="card-panel-icon" />
+                    <Icon type="md-analytics" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
-                    <div class="card-panel-text">系统总压</div>
-                    <count-to :start-var="0" :end-var="10240" :duration="2600" class="card-panel-num" />
+                    <div class="card-panel-text">系统电压</div>
+                    <count-to :start-val="0" :end-val="15.6" :duration="0.1" class="card-panel-num" />
                 </div>
             </div>
-        </el-col>
-        <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        </Col>
+        <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
             <div class="card-panel" @click="handleSetLineChartData('messages')">
                 <div class="card-panel-icon-wrapper icon-message">
-                    <svg-icon icon-class="sqlMonitor" class-name="card-panel-icon" />
+                    <Icon type="ios-flash" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统电流</div>
-                    <count-to :start-var="0" :end-var="81212" :duration="3000" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="0.02" :duration="0.01" class="card-panel-num" />
                 </div>
             </div>
-        </el-col>
-        <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        </Col>
+        <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
             <div class="card-panel" @click="handleSetLineChartData('purchases')">
                 <div class="card-panel-icon-wrapper icon-money">
-                    <svg-icon icon-class="money" class-name="card-panel-icon" />
+                    <Icon type="ios-flame" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统温度</div>
-                    <count-to :start-var="0" :end-var="9280" :duration="3200" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="65" :duration="1" class="card-panel-num" />
                 </div>
             </div>
-        </el-col>
-        <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        </Col>
+        <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
             <div class="card-panel" @click="handleSetLineChartData('shoppings')">
                 <div class="card-panel-icon-wrapper icon-shopping">
-                    <svg-icon icon-class="shopping" class-name="card-panel-icon" />
+                    <Icon type="ios-barcode" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">电池数量</div>
-                    <count-to :start-var="0" :end-var="13600" :duration="3600" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="100" :duration="1" class="card-panel-num" />
                 </div>
             </div>
-        </el-col>
-    </el-row>
+        </Col>
+    </Row>
 </template>
 
 <script>
 import CountTo from 'vue-count-to'
-import '../../assets/icons'
 
 export default {
     name: 'PanelGroup',

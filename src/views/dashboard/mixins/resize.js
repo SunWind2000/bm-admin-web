@@ -1,4 +1,4 @@
-import { debounce } from '@/utils/eladmin_index'
+import { debounce } from '../../../utils/eladmin_index'
 
 export default {
     data() {
@@ -12,7 +12,7 @@ export default {
             if (this.chart) {
                 this.chart.resize()
             }
-        }, 100)
+        }, 100, false)
         this.$_initResizeEvent()
         this.$_initSidebarResizeEvent()
     },
