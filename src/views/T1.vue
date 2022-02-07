@@ -8,7 +8,13 @@
             <br>
             <Table border stripe :columns="columns1" :data="data1"></Table>
             <br>
-            <Page :total="data1.length" show-sizer show-elevator show-total page-size="pageSize" :current="1" @on-change="changePage" />
+            <Page
+                :total="dataLength"
+                :current="current"
+                show-elevator
+                show-total
+                @on-change="changePage"
+            />
         </div>
     </div>
 </template>
@@ -21,16 +27,6 @@ const mockData = historyData
 
 export default {
     name: 'history',
-    props: {
-        pageSize: {
-            type: Number,
-            default: 10,
-        },
-        current: {
-            type: Number,
-            default: 1,
-        },
-    },
     data() {
         return {
             columns1: [
@@ -70,7 +66,8 @@ export default {
                     ]),
                 },
             ],
-            data1: this.getData(),
+            data1: this.getData(1),
+            dataLength: mockData.length,
         }
     },
     methods: {
@@ -82,11 +79,10 @@ export default {
                 content: `编号: ${this.data1[index].no}<br>故障时间: ${this.data1[index].datetime1}<br>接收时间: ${this.data1[index].datetime2}<br>详情: ${this.data1[index].details}`,
             })
         },
-        // 获取数据
-        getData() {
+        // 按页获取数据
+        getData(currentPage) {
             let data = []
-            let totalDataNum = mockData.length
-            for (let i = 0; i < totalDataNum; i++) {
+            for (let i = 10 * (currentPage - 1); i < ((10 * currentPage) > this.dataLength ? this.dataLength : (10 * currentPage)); i++) {
                 data.push({
                     no: mockData[i].no,
                     datetime1: mockData[i].datetime1,
@@ -97,20 +93,8 @@ export default {
             return data
         },
         // 改变每页所显示的数据条数
-        changePage() {
-            let data = this.getData()
-            let pageData = []
-            let pageSize = this.pageSize
-            for (let i = pageSize * (this.current - 1); i < pageSize * this.current; i++) {
-                pageData.push({
-                    no: data[i].no,
-                    datetime1: data[i].datetime1,
-                    datetime2: data[i].datetime2,
-                    details: data[i].details,
-                })
-            }
-            this.data1 = pageData
-            pageData.slice(0, this.pageSize)
+        changePage(value) {
+            this.data1 = this.getData(value)
         },
     },
 }
