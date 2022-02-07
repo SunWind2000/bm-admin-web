@@ -1,7 +1,7 @@
 <template>
     <Row :gutter="40" class-name="panel-group">
         <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+            <div class="card-panel" @click="handleSetLineChartData('newVisits')">
                 <div class="card-panel-icon-wrapper icon-people">
                     <Icon type="md-analytics" class="card-panel-icon" />
                 </div>
@@ -34,7 +34,7 @@
             </div>
         </Col>
         <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('shoppings')">
+            <div class="card-panel" @click="handleSetLineChartData('shopping')">
                 <div class="card-panel-icon-wrapper icon-shopping">
                     <Icon type="ios-barcode" class="card-panel-icon" />
                 </div>

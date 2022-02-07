@@ -1,9 +1,9 @@
 <template>
-    <div :class="className" :style="{height:height,width:width}" />
+    <div id="chart" :class="className" :style="{height:height,width:width}" />
 </template>
 
 <script>
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 
 import resize from './mixins/resize'
 
@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         initChart() {
-            this.chart = echarts.init(this.$el, 'macarons')
+            this.chart = echarts.init(document.getElementById('chart'), 'macarons')
             this.setOptions(this.chartData)
         },
         setOptions({ expectedData, actualData } = {}) {

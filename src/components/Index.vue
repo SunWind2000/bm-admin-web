@@ -550,7 +550,7 @@ aside {
     height: 100%;
     margin-left: 220px;
     transition: margin-left .3s;
-    overflow: hidden;;
+    overflow: hidden;
     background: #f3f7fd;
 }
 /* 主体页面头部 */
