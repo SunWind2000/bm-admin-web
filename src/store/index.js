@@ -15,14 +15,14 @@ const store = new Vuex.Store({
                 text: '主页', // 文本内容
             },
             {
-                name: 'other', // 要跳转的路由名称 不是路径
+                name: 'history', // 要跳转的路由名称 不是路径
                 size: 18, // icon大小
-                type: 'ios-egg-outline', // icon类型
+                type: 'ios-bug', // icon类型
                 text: '历史故障记录', // 点击侧边栏跳到一个单独的路由页面，需要提前在 router.js 定义
             },
             {
                 size: 18, // icon大小
-                type: 'md-arrow-forward', // icon类型
+                type: 'md-globe', // icon类型
                 text: '系统监控',
                 url: 'https://www.baidu.com',
                 isExternal: true, // 外链 跳到一个外部的 URL 页面
@@ -31,13 +31,13 @@ const store = new Vuex.Store({
                 text: '其他设置',
                 type: 'ios-paper',
                 children: [
-                    {
-                        type: 'ios-grid',
-                        name: 't1',
-                        text: '表格',
-                        // hidden 属性 隐藏此菜单 可以通过在地址栏上输入对应的 URL 来显示页面
-                        // hidden: true,
-                    },
+                    // {
+                    //     type: 'ios-grid',
+                    //     name: 't1',
+                    //     text: '表格',
+                    //     // hidden 属性 隐藏此菜单 可以通过在地址栏上输入对应的 URL 来显示页面
+                    //     // hidden: true,
+                    // },
                     {
                         size: 18, // icon大小
                         type: 'md-arrow-forward', // icon类型

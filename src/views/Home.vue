@@ -76,7 +76,7 @@ export default {
     padding: 32px;
     background-color: rgb(240, 242, 245);
     position: relative;
-    height: 700px;
+    height: 650px;
     overflow: auto;
 
     .chart-wrapper {
