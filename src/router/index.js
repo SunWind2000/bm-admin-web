@@ -42,6 +42,12 @@ export const asyncRoutes = {
         meta: { title: '历史故障记录' },
         component: () => import('../views/T1.vue'),
     },
+    system: {
+        path: 'system',
+        name: 'system',
+        meta: { title: '系统监控' },
+        component: () => import('../views/system.vue'),
+    },
     password: {
         path: 'password',
         name: 'password',

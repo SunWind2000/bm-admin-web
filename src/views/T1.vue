@@ -2,15 +2,15 @@
     <div style="padding: 10px;">
         <div class="table-content">
             <div class="query-c">
-                查询：
-                <input search placeholder="请输入查询内容" style="width: auto" />
+                <Button type="primary" @click="exportData(1)">
+                    <Icon type="ios-download-outline"></Icon> 导出
+                </Button>
             </div>
             <br>
             <Table border stripe :columns="columns1" :data="data1"></Table>
             <br>
             <Page
                 :total="dataLength"
-                :current="current"
                 show-elevator
                 show-total
                 @on-change="changePage"
@@ -34,6 +34,7 @@ export default {
                     align: 'center',
                     title: '故障编号',
                     key: 'no',
+                    sortable: true,
                 },
                 {
                     align: 'center',
@@ -92,9 +93,28 @@ export default {
             }
             return data
         },
-        // 改变每页所显示的数据条数
+        // 切换表格页码
         changePage(value) {
             this.data1 = this.getData(value)
+        },
+        // 导出CSV格式数据
+        exportData(type) {
+            if (type === 1) {
+                this.$refs.table.exportCsv({
+                    filename: 'data',
+                })
+            } else if (type === 2) {
+                this.$refs.table.exportCsv({
+                    filename: 'Sorting and filtering data',
+                    original: false,
+                })
+            } else if (type === 3) {
+                this.$refs.table.exportCsv({
+                    filename: 'Custom data',
+                    columns: this.columns1.filter((col, index) => index < 4),
+                    data: this.data1.filter((data, index) => index < 4),
+                })
+            }
         },
     },
 }
