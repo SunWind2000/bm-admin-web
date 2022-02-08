@@ -25,33 +25,6 @@ const store = new Vuex.Store({
                 size: 18, // icon大小
                 type: 'md-globe', // icon类型
                 text: '系统监控',
-                // children: [
-                //     {
-                //         name: 'xdcDetails',
-                //         text: '蓄电池详情',
-                //         type: 'ios-clipboard',
-                //         children: [
-                //             {
-                //                 name: 'table',
-                //                 text: '图表分析',
-                //                 type: 'ios-grid',
-                //                 hidden: true,
-                //             },
-                //             {
-                //                 name: 'lineChart',
-                //                 text: '端电流、电压、温度',
-                //                 type: 'ios-stats',
-                //                 hidden: true,
-                //             },
-                //             {
-                //                 name: 'lineChart',
-                //                 text: 'SOH分析',
-                //                 type: 'ios-stats',
-                //                 hidden: true,
-                //             },
-                //         ],
-                //     },
-                // ],
             },
             {
                 text: '其他设置',
@@ -82,14 +55,6 @@ const store = new Vuex.Store({
                                 type: 'md-person',
                                 name: 'userinfo',
                                 text: '基本资料',
-                            },
-                            {
-                                size: 18, // icon大小
-                                type: 'md-arrow-forward', // icon类型
-                                text: '外链',
-                                hidden: true,
-                                url: 'https://www.baidu.com',
-                                isExternal: true, // 外链 跳到一个外部的 URL 页面
                             },
                         ],
                     },
