@@ -21,7 +21,9 @@
     <!-- 以下为单体蓄电池细节信息 -->
     <div class="xdc-container2" v-else>
         <div class="xdc-title">
-            <Button type="primary" @click="backward">返回</Button>
+            <Button type="primary" @click="backward">
+                <Icon type="md-arrow-back" />返回
+            </Button>
         </div>
         <div>
             <xdc-details :order="xdcDataNum" />
