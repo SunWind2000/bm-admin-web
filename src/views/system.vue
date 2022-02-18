@@ -83,7 +83,7 @@ export default {
     background-image: url("../assets/imgs/xdc.png");
     background-repeat: no-repeat;
     background-size: 100%;
-    opacity: 50%;
+    opacity: 100%;
     transition: 0.5s ease;
     cursor: pointer;
     position: relative;
@@ -96,5 +96,12 @@ export default {
 }
 .xdc-content:hover {
     opacity: 100%;
+    box-shadow:
+         0 0.1px 0.7px skyblue,
+         0 0.1px 1.7px skyblue,
+         0 0.3px 3.1px skyblue,
+         0 0.4px 5.6px skyblue,
+         0 0.8px 10.4px skyblue,
+         0 2px 25px skyblue;
 }
 </style>

@@ -1,16 +1,37 @@
 <template>
-    <Row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
-        <h3 style="text-align: center">单体电池信息（单位：V）</h3><br>
-        <Table border stripe :columns="columns1" :data="data1"></Table>
-        <Table border stripe :columns="columns2" :data="data2"></Table>
-        <Table border stripe :columns="columns3" :data="data3"></Table>
-        <Table border stripe :columns="columns4" :data="data4"></Table><br>
-    </Row>
+    <div>
+        <Row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+            <h3 style="text-align: center">单体电池信息（单位：V）</h3><br>
+            <Table border stripe :columns="columns1" :data="data1"></Table>
+            <Table border stripe :columns="columns2" :data="data2"></Table>
+            <Table border stripe :columns="columns3" :data="data3"></Table>
+            <Table border stripe :columns="columns4" :data="data4"></Table><br>
+        </Row>
+        <Row :gutter="10" style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+            <Col :xs="24" :sm="24" :lg="8">
+                <h3 style="text-align: center">温度变化曲线</h3><br>
+                <div class="chart-wrapper"><line-chart :maxData="maxTempData" :minData="minTempData" /></div>
+            </Col>
+            <Col :xs="24" :sm="24" :lg="8">
+                <h3 style="text-align: center">电压变化曲线</h3><br>
+                <div class="chart-wrapper"><line-chart :maxData="maxVoltageData" :minData="minVoltageData" /></div>
+            </Col>
+            <Col :xs="24" :sm="24" :lg="8">
+                <h3 style="text-align: center">端电流变化曲线</h3><br>
+                <div class="chart-wrapper"><line-chart :maxData="maxCurrentData" :minData="minCurrentData" /></div>
+            </Col>
+        </Row>
+    </div>
 </template>
 
 <script>
+import LineChart from './echart/lineChart'
+
 export default {
     name: 'xdcDetails',
+    components: {
+        LineChart,
+    },
     props: {
         order: { // 蓄电池编号
             type: Number,
@@ -55,6 +76,12 @@ export default {
             Columns4.push(prop)
         }
         return {
+            maxTempData: [10, 11, 13, 11, 12, 12, 10],
+            minTempData: [1, 0, 2, 5, 3, 2, 1],
+            maxVoltageData: [14.5, 13.8, 12.4, 15, 12, 14, 9],
+            minVoltageData: [10, 12.5, 11, 13, 9, 10, 6],
+            maxCurrentData: [1.5, 1.2, 2.5, 2, 1.8, 2, 1.6],
+            minCurrentData: [0.9, 0.8, 1.3, 1, 0.95, 1, 0.6],
             columns1: Columns1,
             columns2: Columns2,
             columns3: Columns3,
@@ -109,5 +136,14 @@ export default {
 </script>
 
 <style scoped>
-
+.chart-wrapper {
+  background: #fff;
+  padding: 16px 16px 0;
+  margin-bottom: 32px;
+}
+@media (max-width:1024px) {
+    .chart-wrapper {
+        padding: 8px;
+    }
+}
 </style>
