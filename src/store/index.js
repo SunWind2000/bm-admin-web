@@ -31,32 +31,14 @@ const store = new Vuex.Store({
                 type: 'ios-paper',
                 children: [
                     {
-                        type: 'ios-grid',
-                        name: 't1',
-                        text: '表格',
-                        // hidden 属性 隐藏此菜单 可以通过在地址栏上输入对应的 URL 来显示页面
-                        hidden: true,
-                    },
-                    {
                         type: 'ios-notifications-outline',
                         name: 'msg',
                         text: '查看消息',
                     },
                     {
-                        text: '个人信息',
-                        type: 'ios-paper',
-                        children: [
-                            {
-                                type: 'md-lock',
-                                name: 'password',
-                                text: '修改密码',
-                            },
-                            {
-                                type: 'md-person',
-                                name: 'userinfo',
-                                text: '基本资料',
-                            },
-                        ],
+                        type: 'md-person',
+                        name: 'userinfo',
+                        text: '基本资料',
                     },
                 ],
             },
