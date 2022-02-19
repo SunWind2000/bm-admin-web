@@ -34,7 +34,7 @@
                                 </FormItem>
                                 <FormItem label="手机号" required="true">
                                     <Input placeholder="请输入手机号码" v-model="formItem1.phone" style="width: 35%" />
-                                    <span style="color: #C0C0C0;margin-left: 10px;">手机号码不能重复</span>
+                                    <span style="color: #C0C0C0;margin-left: 10px;">设置后可以使用手机号码登录</span>
                                 </FormItem>
                                 <FormItem label="性别">
                                     <RadioGroup v-model="formItem1.gender" style="width: 178px">
@@ -44,10 +44,10 @@
                                 </FormItem>
                                 <FormItem label="邮箱" required="true">
                                     <Input placeholder="请输入电子邮箱" v-model="formItem1.email" style="width: 35%" />
-                                    <span style="color: #C0C0C0;margin-left: 10px;">电子邮箱不能重复</span>
+                                    <span style="color: #C0C0C0;margin-left: 10px;">设置后可以使用电子邮箱登录</span>
                                 </FormItem>
                                 <FormItem label="">
-                                    <Button size="small" type="primary" @click="doSubmit1(false)">保存配置</Button>
+                                    <Button size="small" type="primary" style="width: 75px" @click="doSubmit1(false)">保存配置</Button>
                                 </FormItem>
                             </Form>
                         </TabPane>
@@ -81,7 +81,7 @@
                                     />
                                 </FormItem>
                                 <FormItem label="">
-                                    <Button type="primary" size="small" @click="doSubmit2(false)">修改密码</Button>
+                                    <Button type="primary" size="small" style="width: 75px" @click="doSubmit2(false)">修改密码</Button>
                                 </FormItem>
                             </Form>
                         </TabPane>
@@ -99,7 +99,7 @@
                                     </Upload>
                                 </FormItem>
                                 <FormItem label="">
-                                    <Button type="primary" size="small" @click="doSubmit3(false)">上传头像</Button>
+                                    <Button type="primary" size="small" style="width: 75px" @click="doSubmit3(false)">上传头像</Button>
                                 </FormItem>
                             </Form>
                         </TabPane>
