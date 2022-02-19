@@ -5,6 +5,7 @@
 <script>
 import * as echarts from 'echarts'
 import { debounce } from '../../utils/eladmin_index'
+import { getDatetime } from '../../utils'
 
 require('echarts/theme/macarons')
 
@@ -59,6 +60,11 @@ export default {
     },
     methods: {
         initChart() {
+            let xAxisData = []
+            let datetime = getDatetime()
+            for (let i = 0; i < 7; i++) {
+                xAxisData.push(datetime.pop())
+            }
             this.chart = echarts.init(this.$el, 'macarons')
             this.chart.setOption({
                 tooltip: {
@@ -81,7 +87,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    data: xAxisData,
                 },
                 yAxis: {
                     type: 'value',

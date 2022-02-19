@@ -4,6 +4,7 @@
 
 <script>
 import * as echarts from 'echarts'
+import { getDatetime } from '../../utils'
 import resize from './mixins/resize'
 
 require('echarts/theme/macarons')
@@ -63,9 +64,14 @@ export default {
             this.setOptions(this.chartData)
         },
         setOptions({ expectedData, actualData } = {}) {
+            let xAxisData = []
+            let datetime = getDatetime()
+            for (let i = 0; i < 7; i++) {
+                xAxisData.push(datetime.pop())
+            }
             this.chart.setOption({
                 xAxis: {
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    data: xAxisData,
                     boundaryGap: false,
                     axisTick: {
                         show: false,

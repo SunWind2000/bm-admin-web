@@ -5,6 +5,7 @@
 <script>
 import * as echarts from 'echarts'
 import { debounce } from '../../utils/eladmin_index'
+import { getDatetime } from '../../utils'
 
 require('echarts/theme/macarons')
 
@@ -50,9 +51,13 @@ export default {
     },
     methods: {
         initChart() {
+            let xAxisData = []
+            let datetime = getDatetime()
+            for (let i = 0; i < 7; i++) {
+                xAxisData.push(datetime.pop())
+            }
             this.chart = echarts.init(this.$el, 'macarons')
-            const axisData = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-            const data = axisData.map((item, i) => Math.round(Math.random() * 10 * (i + 1)))
+            const data = xAxisData.map((item, i) => Math.round(Math.random() * 10 * (i + 1)))
             const links = data.map((item, i) => ({
                 source: i,
                 target: i + 1,
@@ -71,7 +76,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: axisData,
+                    data: xAxisData,
                 },
                 yAxis: {
                     type: 'value',
