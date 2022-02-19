@@ -52,14 +52,20 @@ export default {
         initChart() {
             this.chart = echarts.init(this.$el, 'macarons')
             this.chart.setOption({
+                title: {
+                    text: '系统温度',
+                },
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: { // 坐标轴指示器，坐标轴触发有效
                         type: 'line', // 默认为直线，可选为：'line' | 'shadow'
                     },
+                    feature: {
+                        restore: {},
+                        saveAsImage: {},
+                    },
                 },
                 grid: {
-                    top: 10,
                     left: '2%',
                     right: '2%',
                     bottom: '3%',

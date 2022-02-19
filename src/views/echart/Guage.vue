@@ -53,6 +53,9 @@ export default {
             this.chart = echarts.init(this.$el, 'macarons')
 
             this.chart.setOption({
+                title: {
+                    text: '系统SOC',
+                },
                 tooltip: {
                     formatter: '{a} <br/>{b} : {c}%',
                 },

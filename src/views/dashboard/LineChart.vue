@@ -4,7 +4,6 @@
 
 <script>
 import * as echarts from 'echarts'
-
 import resize from './mixins/resize'
 
 require('echarts/theme/macarons')
@@ -74,7 +73,7 @@ export default {
                 },
                 grid: {
                     left: 10,
-                    right: 10,
+                    right: 15,
                     bottom: 20,
                     top: 30,
                     containLabel: true,

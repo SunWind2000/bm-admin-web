@@ -62,7 +62,12 @@ export default {
                 title: {
                     text: '系统总压',
                 },
-                tooltip: {},
+                tooltip: {
+                    feature: {
+                        restore: {},
+                        saveAsImage: {},
+                    },
+                },
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,

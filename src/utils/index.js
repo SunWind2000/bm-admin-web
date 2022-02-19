@@ -9,6 +9,17 @@ export function resetTokenAndClearUser() {
     resetRouter()
 }
 
+// 货期获取系统当前“月-日”
+export function getTodayDatetime() {
+    let datetime = new Date()
+    let Month = datetime.getMonth() + 1
+    let today = datetime.getDate()
+    return {
+        Month,
+        today,
+    }
+}
+
 export const defaultDocumentTitle = '电池监控系统'
 export function getDocumentTitle(pageTitle) {
     if (pageTitle) return `${defaultDocumentTitle} - ${pageTitle}`
