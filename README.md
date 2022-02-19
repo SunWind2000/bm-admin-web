@@ -1,14 +1,12 @@
-# Vue 轻量级后台管理系统基础模板
+# 基于Vue的轻量级电池监控管理系统
 
-### [在线预览](https://woai3c.github.io/vue-admin-template)
-### [更新日志](https://github.com/woai3c/vue-admin-template/blob/master/update.md)
-### 相关依赖
+### 一、相关依赖
 * [vue-router](https://router.vuejs.org/zh/)
 * [iview](https://www.iviewui.com/docs/guide/install)
 * [axios](https://www.kancloud.cn/yunye/axios/234845)
 * [vuex](https://vuex.vuejs.org/zh/)
 
-### 功能
+### 二、功能
 
 #### 登录页
 * 一周七天自动切换不同的壁纸（建议自己配置）
@@ -66,31 +64,23 @@ export default {
 #### 其它
 * 利用`axios`拦截器 实现了`ajax`请求前展示`loading` 请求结束关闭`loading`
 
-### 注意
-* 源码可见 并且添加了必要的注释 可以自行更改
 
-
-`Index`组件一般情况下只需要传数据就行 其他不用关注
-
-市面上有大量的vue后台管理系统模板 但是功能都太丰富了 而且有很多组件用不上 所以写了这么一个最基础的 只有必要功能的模板
-UI库使用的是`iView` 有大量的组件可用 
-
-### 使用
+### 三、使用
 #### 下载
 ```
-git clone https://github.com/woai3c/vue-admin-template.git
+git clone git@github.com:SunWind2000/bm-admin-web.git
 
-cd vue-admin-template
+cd bm-admin-web
 
-npm i
+npm install
 ```
 
-#### 开发
+#### 开发/预览
 ```
 npm run serve
 ```
 
-#### 打包
+#### 打包（应用到生产环境）
 ````
 npm run build
 ````
@@ -101,8 +91,6 @@ npm run build
 publicPath: './',
 ```
 
-## License
+### 四、License
 MIT
-## 赞助
-![](https://github.com/woai3c/nand2tetris/blob/master/img/wx.jpg)
-![](https://github.com/woai3c/nand2tetris/blob/master/img/zfb.jpg)
+
