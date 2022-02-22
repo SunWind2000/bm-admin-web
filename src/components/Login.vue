@@ -17,12 +17,14 @@
 </template>
 
 <script>
+import { fetchUserData } from '../api'
+
 export default {
     name: 'login',
     data() {
         return {
-            account: 'admin',
-            pwd: 'admin',
+            account: '',
+            pwd: '',
             accountError: '',
             pwdError: '',
             isShowLoading: false,
@@ -42,37 +44,62 @@ export default {
     },
     methods: {
         verifyAccount() {
-            if (this.account !== 'admin') {
+            if (this.account === '') {
                 this.accountError = '账号不能为空'
             } else {
                 this.accountError = ''
             }
         },
         verifyPwd() {
-            if (this.pwd !== 'admin') {
+            if (this.pwd === '') {
                 this.pwdError = '密码不能为空'
             } else {
                 this.pwdError = ''
             }
         },
         submit() {
-            if (this.account === 'admin' && this.pwd === 'admin') {
-                this.isShowLoading = true
-                // 登陆成功 设置用户信息
-                localStorage.setItem('userImg', 'https://avatars3.githubusercontent.com/u/22117876?s=460&v=4')
-                localStorage.setItem('userName', '管理员')
-                // 登陆成功 假设这里是后台返回的 token
-                localStorage.setItem('token', 'i_am_token')
-                this.$router.push({ path: this.redirect || '/' })
-            } else {
-                if (this.account !== 'admin') {
-                    this.accountError = '账号错误，请重试'
+            fetchUserData(this.account, this.pwd).then(response => {
+                console.log(response.data)
+                if (response.data.status === 'success') {
+                    this.isShowLoading = true
+                    // 登陆成功 设置用户信息
+                    localStorage.setItem('userImg', 'http://127.0.0.1:8000/users/upload' + response.data.data[0].fields.avatar)
+                    localStorage.setItem('userName', response.data.data[0].fields.nickname)
+                    localStorage.setItem('token', response.data.data[0].fields.email)
+                    localStorage.setItem('email', response.data.data[0].fields.email)
+                    localStorage.setItem('phone', response.data.data[0].fields.phone)
+                    localStorage.setItem('gender', response.data.data[0].fields.gender)
+                    localStorage.setItem('account', response.data.data[0].fields.username)
+                    this.$router.push({ path: this.redirect || '/' })
+                } else {
+                    if (this.account !== 'admin') {
+                        this.accountError = '账号错误，请重试'
+                    }
+                    if (this.pwd !== 'admin') {
+                        this.pwdError = '密码错误，请重试'
+                    }
                 }
-
-                if (this.pwd !== 'admin') {
-                    this.pwdError = '密码错误，请重试'
-                }
-            }
+            })
+            // fetchUserData().then(response => {
+            //     console.log(response.data)
+            // })
+            // if (this.account === 'admin' && this.pwd === 'admin') {
+            //     this.isShowLoading = true
+            //     // 登陆成功 设置用户信息
+            //     localStorage.setItem('userImg', 'https://avatars3.githubusercontent.com/u/22117876?s=460&v=4')
+            //     localStorage.setItem('userName', '管理员')
+            //     // 登陆成功 假设这里是后台返回的 token
+            //     localStorage.setItem('token', 'i_am_token')
+            //     this.$router.push({ path: this.redirect || '/' })
+            // } else {
+            //     if (this.account !== 'admin') {
+            //         this.accountError = '账号错误，请重试'
+            //     }
+            //
+            //     if (this.pwd !== 'admin') {
+            //         this.pwdError = '密码错误，请重试'
+            //     }
+            // }
         },
     },
 }

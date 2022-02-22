@@ -115,7 +115,7 @@ export default {
     name: 'userInfo',
     data() {
         return {
-            username: 'admin',
+            username: localStorage.getItem('account'),
             nickname: localStorage.getItem('userName'),
             phone: localStorage.getItem('phone'),
             email: localStorage.getItem('email'),

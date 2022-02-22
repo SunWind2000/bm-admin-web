@@ -5,6 +5,10 @@ export function resetTokenAndClearUser() {
     localStorage.setItem('token', '')
     localStorage.setItem('userImg', '')
     localStorage.setItem('userName', '')
+    localStorage.setItem('email', '')
+    localStorage.setItem('phone', '')
+    localStorage.setItem('gender', '')
+    localStorage.setItem('account', '')
     // 重设路由
     resetRouter()
 }
