@@ -7,7 +7,7 @@
                     <div slot="title" class="clearfix"><h3>个人信息</h3></div>
                     <div>
                         <div style="text-align: center;">
-                            <img src="https://avatars3.githubusercontent.com/u/22117876?s=460&v=4" class="avatar"/>
+                            <img :src="userImg" class="avatar"/>
                         </div><br />
                         <div class="user-info">
                             <ul>
@@ -51,7 +51,7 @@
                                 </FormItem>
                             </Form>
                         </TabPane>
-                        <TabPane label="用户密码" name="second">
+                        <TabPane label="更改密码" name="second">
                             <Form ref="form" style="margin-top: 10px;" v-model="formItem2" :label-width="100">
                                 <FormItem label="旧密码" required="true">
                                     <Input
@@ -85,7 +85,7 @@
                                 </FormItem>
                             </Form>
                         </TabPane>
-                        <TabPane label="用户头像" name="third">
+                        <TabPane label="上传头像" name="third">
                             <Form ref="form" style="margin-top: 10px;">
                                 <FormItem label="">
                                     <Upload
@@ -111,10 +111,13 @@
 </template>
 
 <script>
+import { updateUserData, updateUserPwd } from '../api'
+
 export default {
     name: 'userInfo',
     data() {
         return {
+            userImg: localStorage.getItem('userImg'),
             username: localStorage.getItem('account'),
             nickname: localStorage.getItem('userName'),
             phone: localStorage.getItem('phone'),
@@ -150,15 +153,32 @@ export default {
                     content: '邮箱账号不能为空',
                 })
             } else {
-                this.nickname = this.formItem1.nickname
-                this.phone = this.formItem1.phone
-                this.email = this.formItem1.email
-                localStorage.setItem('userName', this.formItem1.nickname)
-                localStorage.setItem('phone', this.formItem1.phone)
-                localStorage.setItem('email', this.formItem1.email)
-                this.$Notice.success({
-                    title: '成功',
-                    desc: noDesc ? '' : '修改基本资料配置成功',
+                let updateData = {
+                    username: localStorage.getItem('account'),
+                    nickname: this.formItem1.nickname,
+                    phone: this.formItem1.phone,
+                    gender: this.formItem1.gender,
+                    email: this.formItem1.email,
+                }
+                updateUserData(updateData).then(response => {
+                    if (response.data.status === 'success') {
+                        this.nickname = this.formItem1.nickname
+                        this.email = this.formItem1.email
+                        this.phone = this.formItem1.phone
+                        localStorage.setItem('userName', this.formItem1.nickname)
+                        localStorage.setItem('phone', this.formItem1.phone)
+                        localStorage.setItem('gender', this.formItem1.gender)
+                        localStorage.setItem('email', this.formItem1.email)
+                        this.$Notice.success({
+                            title: '成功',
+                            desc: noDesc ? '' : '修改基本资料配置成功',
+                        })
+                    } else {
+                        this.$Notice.error({
+                            title: '失败',
+                            desc: noDesc ? '' : response.data.error_msg,
+                        })
+                    }
                 })
             }
         },
@@ -179,9 +199,23 @@ export default {
                     content: '两次输入的新密码不一致，请检查后提交',
                 })
             } else {
-                this.$Notice.success({
-                    title: '成功',
-                    desc: noDesc ? '' : '修改密码成功',
+                let updatePwd = {
+                    username: localStorage.getItem('account'),
+                    password: this.formItem2.newPassword,
+                }
+                updateUserPwd(updatePwd).then(response => {
+                    console.log(response.data)
+                    if (response.data.status === 'success') {
+                        this.$Notice.success({
+                            title: '成功',
+                            desc: noDesc ? '' : '修改密码成功',
+                        })
+                    } else {
+                        this.$Notice.error({
+                            title: '失败',
+                            desc: noDesc ? '' : response.data.error_msg,
+                        })
+                    }
                 })
             }
         },

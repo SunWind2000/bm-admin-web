@@ -91,6 +91,9 @@ npm run build
 publicPath: './',
 ```
 
+#### 配套的后端项目地址
+[battery-monitor](https://github.com/SunWind2000/battery-monitor)
+
 ### 四、License
 MIT
 

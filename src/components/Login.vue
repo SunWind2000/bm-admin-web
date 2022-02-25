@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import { fetchUserData } from '../api'
+import avatarBaseUrl, { fetchUserData } from '../api'
+
 
 export default {
     name: 'login',
@@ -59,11 +60,10 @@ export default {
         },
         submit() {
             fetchUserData(this.account, this.pwd).then(response => {
-                console.log(response.data)
                 if (response.data.status === 'success') {
                     this.isShowLoading = true
                     // 登陆成功 设置用户信息
-                    localStorage.setItem('userImg', 'http://127.0.0.1:8000/users/upload' + response.data.data[0].fields.avatar)
+                    localStorage.setItem('userImg', avatarBaseUrl + response.data.data[0].fields.avatar)
                     localStorage.setItem('userName', response.data.data[0].fields.nickname)
                     localStorage.setItem('token', response.data.data[0].fields.email)
                     localStorage.setItem('email', response.data.data[0].fields.email)
@@ -72,34 +72,9 @@ export default {
                     localStorage.setItem('account', response.data.data[0].fields.username)
                     this.$router.push({ path: this.redirect || '/' })
                 } else {
-                    if (this.account !== 'admin') {
-                        this.accountError = '账号错误，请重试'
-                    }
-                    if (this.pwd !== 'admin') {
-                        this.pwdError = '密码错误，请重试'
-                    }
+                    this.$Message.error(response.data.error_msg)
                 }
             })
-            // fetchUserData().then(response => {
-            //     console.log(response.data)
-            // })
-            // if (this.account === 'admin' && this.pwd === 'admin') {
-            //     this.isShowLoading = true
-            //     // 登陆成功 设置用户信息
-            //     localStorage.setItem('userImg', 'https://avatars3.githubusercontent.com/u/22117876?s=460&v=4')
-            //     localStorage.setItem('userName', '管理员')
-            //     // 登陆成功 假设这里是后台返回的 token
-            //     localStorage.setItem('token', 'i_am_token')
-            //     this.$router.push({ path: this.redirect || '/' })
-            // } else {
-            //     if (this.account !== 'admin') {
-            //         this.accountError = '账号错误，请重试'
-            //     }
-            //
-            //     if (this.pwd !== 'admin') {
-            //         this.pwdError = '密码错误，请重试'
-            //     }
-            // }
         },
     },
 }
