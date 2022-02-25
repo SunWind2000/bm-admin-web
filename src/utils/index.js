@@ -9,6 +9,7 @@ export function resetTokenAndClearUser() {
     localStorage.setItem('phone', '')
     localStorage.setItem('gender', '')
     localStorage.setItem('account', '')
+    localStorage.setItem('password', '')
     // 重设路由
     resetRouter()
 }

@@ -5,7 +5,10 @@ const host = 'http://127.0.0.1'
 const port = '8000'
 
 // 用户头像地址所在文件夹
-const avatarBaseUrl = host + ':' + port + '/upload/'
+export const avatarBaseUrl = host + ':' + port + '/upload/'
+
+// 用户头像上传api地址
+export const uploadApiUrl = host + ':' + port + '/api/upload-user-avatar/'
 
 // 获取用户数据
 export function fetchUserData(account, pwd) {
@@ -37,5 +40,3 @@ export function updateUserPwd(userData) {
         method: 'GET',
     })
 }
-
-export default avatarBaseUrl

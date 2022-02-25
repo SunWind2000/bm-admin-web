@@ -86,20 +86,23 @@
                             </Form>
                         </TabPane>
                         <TabPane label="上传头像" name="third">
-                            <Form ref="form" style="margin-top: 10px;">
-                                <FormItem label="">
+                            <Form ref="form" style="margin-top: 10px;" enctype="multipart/form-data" method="post">
+                                <FormItem label="" >
                                     <Upload
                                         multiple
+                                        show-upload-list="true"
                                         type="drag"
-                                        action="//jsonplaceholder.typicode.com/posts/">
+                                        name="userAvatar"
+                                        :data="{username: username}"
+                                        :action="uploadApiUrl"
+                                        :on-success="uploadSuccess"
+                                        :on-error="uploadError"
+                                    >
                                         <div style="padding: 20px 0">
                                             <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                                             <p>点击或拖拽文件上传</p>
                                         </div>
                                     </Upload>
-                                </FormItem>
-                                <FormItem label="">
-                                    <Button type="primary" size="small" style="width: 75px" @click="doSubmit3(false)">上传头像</Button>
                                 </FormItem>
                             </Form>
                         </TabPane>
@@ -111,7 +114,7 @@
 </template>
 
 <script>
-import { updateUserData, updateUserPwd } from '../api'
+import { updateUserData, updateUserPwd, uploadApiUrl, avatarBaseUrl } from '../api'
 
 export default {
     name: 'userInfo',
@@ -133,6 +136,7 @@ export default {
                 newPassword: '',
                 confirmNewPassword: '',
             },
+            uploadApiUrl,
         }
     },
     methods: {
@@ -188,6 +192,11 @@ export default {
                     background: true,
                     content: '旧密码不能为空',
                 })
+            } else if (this.formItem2.oldPassword !== localStorage.getItem('password')) {
+                this.$Message.error({
+                    background: true,
+                    content: '旧密码输入错误，请检查后提交',
+                })
             } else if (this.formItem2.newPassword === '') {
                 this.$Message.warning({
                     background: true,
@@ -219,10 +228,18 @@ export default {
                 })
             }
         },
-        doSubmit3(noDesc) {
+        uploadSuccess(response) {
             this.$Notice.success({
                 title: '成功',
-                desc: noDesc ? '' : '头像上传成功',
+                desc: '头像已上传到' + response.data.img_name + '，刷新页面即可重新加载',
+            })
+            localStorage.setItem('userImg', avatarBaseUrl + response.data.img_name)
+            window.reload()
+        },
+        uploadError(response) {
+            this.$Notice.error({
+                title: '失败',
+                desc: response.data.error_msg,
             })
         },
     },

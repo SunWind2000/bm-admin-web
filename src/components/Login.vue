@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import avatarBaseUrl, { fetchUserData } from '../api'
-
+import { avatarBaseUrl, fetchUserData } from '../api'
 
 export default {
     name: 'login',
@@ -70,6 +69,7 @@ export default {
                     localStorage.setItem('phone', response.data.data[0].fields.phone)
                     localStorage.setItem('gender', response.data.data[0].fields.gender)
                     localStorage.setItem('account', response.data.data[0].fields.username)
+                    localStorage.setItem('password', response.data.data[0].fields.password)
                     this.$router.push({ path: this.redirect || '/' })
                 } else {
                     this.$Message.error(response.data.error_msg)
