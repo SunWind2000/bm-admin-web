@@ -140,6 +140,7 @@ export default {
         }
     },
     methods: {
+        // 修改资料判断
         doSubmit1(noDesc) {
             if (this.formItem1.nickname === '') {
                 this.$Message.warning({
@@ -186,6 +187,7 @@ export default {
                 })
             }
         },
+        // 修改密码判断
         doSubmit2(noDesc) {
             if (this.formItem2.oldPassword === '') {
                 this.$Message.warning({
@@ -228,13 +230,13 @@ export default {
                 })
             }
         },
+        // 文件上传后的状态响应
         uploadSuccess(response) {
             this.$Notice.success({
                 title: '成功',
                 desc: '头像已上传到' + response.data.img_name + '，刷新页面即可重新加载',
             })
             localStorage.setItem('userImg', avatarBaseUrl + response.data.img_name)
-            window.reload()
         },
         uploadError(response) {
             this.$Notice.error({
