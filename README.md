@@ -5,6 +5,7 @@
 * [iview](https://www.iviewui.com/docs/guide/install)
 * [axios](https://www.kancloud.cn/yunye/axios/234845)
 * [vuex](https://vuex.vuejs.org/zh/)
+* [vue-template-admin](https://github.com/woai3c/vue-admin-template)
 
 ### 二、功能
 
