@@ -40,3 +40,11 @@ export function updateUserPwd(userData) {
         method: 'GET',
     })
 }
+
+// 获取dashboard数据
+export function getDashboardData() {
+    return request({
+        url: host + ':' + port + '/system/get-system-data',
+        method: 'GET',
+    })
+}

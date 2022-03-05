@@ -6,8 +6,17 @@
 import * as echarts from 'echarts'
 import { debounce } from '../../utils/eladmin_index'
 import { getDatetime } from '../../utils'
+import { getDashboardData } from '../../api'
 
 require('echarts/theme/macarons')
+
+let data = []
+
+getDashboardData().then(response => {
+    for (let i = 0; i < response.data.data.length; i++) {
+        data.push(response.data.data[i].fields.total_voltage)
+    }
+})
 
 export default {
     props: {
@@ -57,7 +66,6 @@ export default {
                 xAxisData.push(datetime.pop())
             }
             this.chart = echarts.init(this.$el, 'macarons')
-            const data = xAxisData.map((item, i) => Math.round(Math.random() * 10 * (i + 1)))
             const links = data.map((item, i) => ({
                 source: i,
                 target: i + 1,

@@ -6,8 +6,21 @@
 import * as echarts from 'echarts'
 import { debounce } from '../../utils/eladmin_index'
 import { getDatetime } from '../../utils'
+import { getDashboardData } from '../../api'
 
 require('echarts/theme/macarons')
+
+let temp = {
+    maxData: [],
+    minData: [],
+}
+
+getDashboardData().then(response => {
+    for (let i = 0; i < response.data.data.length; i++) {
+        temp.maxData.push(response.data.data[i].fields.max_temperature)
+        temp.minData.push(response.data.data[i].fields.min_temperature)
+    }
+})
 
 export default {
     props: {
@@ -95,13 +108,13 @@ export default {
                     type: 'bar',
                     stack: 'vistors',
                     barWidth: '60%',
-                    data: [79, 52, 200, 334, 390, 330, 220],
+                    data: temp.minData,
                 }, {
                     name: '最高温度',
                     type: 'bar',
                     stack: 'vistors',
                     barWidth: '60%',
-                    data: [80, 52, 200, 334, 390, 330, 220],
+                    data: temp.maxData,
                 }],
             })
         },

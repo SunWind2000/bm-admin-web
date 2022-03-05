@@ -63,7 +63,7 @@ export default {
             this.chart = echarts.init(document.getElementById('chart'), 'macarons')
             this.setOptions(this.chartData)
         },
-        setOptions({ expectedData, actualData } = {}) {
+        setOptions({ maxData, minData } = {}) {
             let xAxisData = []
             let datetime = getDatetime()
             for (let i = 0; i < 7; i++) {
@@ -97,10 +97,10 @@ export default {
                     },
                 },
                 legend: {
-                    data: ['expected', 'actual'],
+                    data: ['max', 'min'],
                 },
                 series: [{
-                    name: 'expected',
+                    name: 'max',
                     itemStyle: {
                         normal: {
                             color: '#FF005A',
@@ -112,12 +112,12 @@ export default {
                     },
                     smooth: true,
                     type: 'line',
-                    data: expectedData,
+                    data: maxData,
                     animationDuration: 2800,
                     animationEasing: 'cubicInOut',
                 },
                 {
-                    name: 'actual',
+                    name: 'min',
                     smooth: true,
                     type: 'line',
                     itemStyle: {
@@ -132,7 +132,7 @@ export default {
                             },
                         },
                     },
-                    data: actualData,
+                    data: minData,
                     animationDuration: 2800,
                     animationEasing: 'quadraticOut',
                 }],

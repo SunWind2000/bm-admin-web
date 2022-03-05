@@ -1,46 +1,46 @@
 <template>
     <Row :gutter="40" class-name="panel-group">
         <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('newVisits')">
+            <div class="card-panel" @click="handleSetLineChartData('voltage')">
                 <div class="card-panel-icon-wrapper icon-people">
                     <Icon type="md-analytics" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统电压</div>
-                    <count-to :start-val="0" :end-val="15.6" :duration="0.1" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="panelData.voltage" :duration="0.1" class="card-panel-num" />
                 </div>
             </div>
         </Col>
         <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('messages')">
+            <div class="card-panel" @click="handleSetLineChartData('current')">
                 <div class="card-panel-icon-wrapper icon-message">
                     <Icon type="ios-flash" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统电流</div>
-                    <count-to :start-val="0" :end-val="0.02" :duration="0.01" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="panelData.current" :duration="0.01" class="card-panel-num" />
                 </div>
             </div>
         </Col>
         <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('purchases')">
+            <div class="card-panel" @click="handleSetLineChartData('temperature')">
                 <div class="card-panel-icon-wrapper icon-money">
                     <Icon type="ios-flame" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统温度</div>
-                    <count-to :start-val="0" :end-val="65" :duration="1" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="panelData.temperature" :duration="1" class="card-panel-num" />
                 </div>
             </div>
         </Col>
         <Col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-            <div class="card-panel" @click="handleSetLineChartData('shopping')">
+            <div class="card-panel" @click="handleSetLineChartData('num')">
                 <div class="card-panel-icon-wrapper icon-shopping">
                     <Icon type="ios-barcode" class="card-panel-icon" />
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">电池数量</div>
-                    <count-to :start-val="0" :end-val="100" :duration="1" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="panelData.num" :duration="1" class="card-panel-num" />
                 </div>
             </div>
         </Col>
@@ -49,9 +49,30 @@
 
 <script>
 import CountTo from 'vue-count-to'
+import { getDashboardData } from '../../api'
+
+let data = {
+    voltage: 0,
+    current: 0,
+    temperature: 0,
+    num: 0,
+}
+
+getDashboardData().then(response => {
+    let last = response.data.data.length - 1
+    data.voltage = response.data.data[last].fields.total_voltage
+    data.current = response.data.data[last].fields.max_current
+    data.temperature = response.data.data[last].fields.max_temperature
+    data.num = response.data.data[last].fields.battery_num
+})
 
 export default {
     name: 'PanelGroup',
+    data() {
+        return {
+            panelData: data,
+        }
+    },
     components: {
         CountTo,
     },

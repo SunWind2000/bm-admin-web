@@ -5,8 +5,16 @@
 <script>
 import * as echarts from 'echarts'
 import { debounce } from '../../utils/eladmin_index'
+import { getDashboardData } from '../../api'
 
 require('echarts/theme/macarons')
+
+let value = []
+
+getDashboardData().then(response => {
+    let last = response.data.data.length - 1
+    value.push(response.data.data[last].fields.soc)
+})
 
 export default {
     props: {
@@ -70,7 +78,7 @@ export default {
                         name: '系统SOC',
                         type: 'gauge',
                         detail: { formatter: '{value}' },
-                        data: [{ value: 14.6, name: '系统SOC' }],
+                        data: [{ value: value[0], name: '系统SOC' }],
                     },
                 ],
             })

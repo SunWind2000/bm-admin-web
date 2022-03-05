@@ -26,25 +26,38 @@ import LineChart from './dashboard/LineChart'
 import Guage from './echart/Guage'
 import BarChart from './echart/barChart'
 import Graph from './echart/Graph'
+import { getDashboardData } from '../api'
 
-const lineChartData = {
-    newVisits: {
-        expectedData: [100, 120, 161, 134, 105, 160, 165],
-        actualData: [120, 82, 91, 154, 162, 140, 145],
+let lineChartData = {
+    voltage: {
+        maxData: [],
+        minData: [],
     },
-    messages: {
-        expectedData: [200, 192, 120, 144, 160, 130, 140],
-        actualData: [180, 160, 151, 106, 145, 150, 130],
+    current: {
+        maxData: [],
+        minData: [],
     },
-    purchases: {
-        expectedData: [80, 100, 121, 104, 105, 90, 100],
-        actualData: [120, 90, 100, 138, 142, 130, 130],
+    temperature: {
+        maxData: [],
+        minData: [],
     },
-    shopping: {
-        expectedData: [130, 140, 141, 142, 145, 150, 160],
-        actualData: [120, 82, 91, 154, 162, 140, 130],
+    num: {
+        maxData: [],
+        minData: [0, 0, 0, 0, 0, 0, 0],
     },
 }
+
+getDashboardData().then(response => {
+    for (let i = 0; i < response.data.data.length; i++) {
+        lineChartData.voltage.maxData.push(response.data.data[i].fields.max_voltage)
+        lineChartData.voltage.minData.push(response.data.data[i].fields.min_voltage)
+        lineChartData.current.maxData.push(response.data.data[i].fields.max_current)
+        lineChartData.current.minData.push(response.data.data[i].fields.min_current)
+        lineChartData.temperature.maxData.push(response.data.data[i].fields.max_temperature)
+        lineChartData.temperature.minData.push(response.data.data[i].fields.min_temperature)
+        lineChartData.num.maxData.push(response.data.data[i].fields.battery_num)
+    }
+})
 
 export default {
     name: 'home',
@@ -57,7 +70,7 @@ export default {
     },
     data() {
         return {
-            lineChartData: lineChartData.newVisits,
+            lineChartData: lineChartData.voltage,
         }
     },
     methods: {
