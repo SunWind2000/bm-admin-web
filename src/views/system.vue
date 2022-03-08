@@ -26,14 +26,16 @@
             </Button>
         </div>
         <div>
-            <xdc-details :order="xdcDataNum" />
+            <xdc-details :data="xdcData" />
         </div>
     </div>
 </template>
 
 <script>
-import xdcDataFri from '../testData/testXdcData_Fri'
 import XdcDetails from './xdcDetails'
+import { getBatteryData } from '../api'
+
+let data = []
 
 export default {
     name: 'system',
@@ -44,18 +46,34 @@ export default {
         return {
             flag: true, // 组件显示标志
             colNUM: 8, // 蓄电池列阵的列数
-            rowNUM: Math.ceil(xdcDataFri.length / 8), // 蓄电池列阵的行数
-            dataTotalNum: xdcDataFri.length, // 蓄电池列阵中包含的蓄电池总数
-            xdcDataNum: this.clickXdc, // 蓄电池编号
+            rowNUM: Math.ceil(localStorage.getItem('battery_num') / 8), // 蓄电池列阵的行数
+            dataTotalNum: localStorage.getItem('battery_num'), // 蓄电池列阵中包含的蓄电池总数
+            xdcData: data,
         }
     },
     methods: {
         clickXdc(obj) {
-            this.flag = !this.flag
-            return obj
+            getBatteryData(obj).then(response => {
+                if (response.data.status === 'success') {
+                    this.$Message.success({
+                        background: true,
+                        content: '数据加载成功',
+                    })
+                    for (let i = 0; i < response.data.data.length; i++) {
+                        data.push(response.data.data[i])
+                    }
+                    this.flag = !this.flag
+                } else {
+                    this.$Message.error({
+                        background: true,
+                        content: '数据加载失败',
+                    })
+                }
+            })
         },
         backward() {
             this.flag = !this.flag
+            data = []
         },
     },
 }

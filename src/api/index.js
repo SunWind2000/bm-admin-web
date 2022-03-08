@@ -48,3 +48,12 @@ export function getDashboardData() {
         method: 'GET',
     })
 }
+
+// 获取单体电池数据
+export function getBatteryData(batteryId) {
+    return request({
+        url: host + ':' + port + '/system/get-battery-cell-data'
+             + '?batteryId=' + batteryId.toString(),
+        method: 'GET',
+    })
+}

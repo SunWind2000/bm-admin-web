@@ -56,6 +56,9 @@ getDashboardData().then(response => {
         lineChartData.temperature.maxData.push(response.data.data[i].fields.max_temperature)
         lineChartData.temperature.minData.push(response.data.data[i].fields.min_temperature)
         lineChartData.num.maxData.push(response.data.data[i].fields.battery_num)
+        if (i === response.data.data.length - 1) {
+            localStorage.setItem('battery_num', response.data.data[i].fields.battery_num)
+        }
     }
 })
 

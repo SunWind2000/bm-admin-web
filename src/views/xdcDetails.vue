@@ -33,12 +33,13 @@ export default {
         LineChart,
     },
     props: {
-        order: { // 蓄电池编号
-            type: Number,
+        data: {
+            type: Array,
             required: true,
         },
     },
     data() {
+        let data = this.getData()
         const Columns1 = []
         const Columns2 = []
         const Columns3 = []
@@ -76,60 +77,111 @@ export default {
             Columns4.push(prop)
         }
         return {
-            maxTempData: [10, 11, 13, 11, 12, 12, 10],
-            minTempData: [1, 0, 2, 5, 3, 2, 1],
-            maxVoltageData: [14.5, 13.8, 12.4, 15, 12, 14, 9],
-            minVoltageData: [10, 12.5, 11, 13, 9, 10, 6],
-            maxCurrentData: [1.5, 1.2, 2.5, 2, 1.8, 2, 1.6],
-            minCurrentData: [0.9, 0.8, 1.3, 1, 0.95, 1, 0.6],
+            maxTempData: data.maxTemp,
+            minTempData: data.minTemp,
+            maxVoltageData: data.maxVoltage,
+            minVoltageData: data.minVoltage,
+            maxCurrentData: data.maxCurrent,
+            minCurrentData: data.minCurrent,
             columns1: Columns1,
             columns2: Columns2,
             columns3: Columns3,
             columns4: Columns4,
-            data1: [
-                {
-                    cell_1: 12.5,
-                    cell_2: 12.5,
-                    cell_3: 12.5,
-                    cell_4: 12.5,
-                    cell_5: 12.5,
-                    cell_6: 12.5,
-                },
-            ],
-            data2: [
-                {
-                    cell_7: 12.5,
-                    cell_8: 12.5,
-                    cell_9: 12.5,
-                    cell_10: 12.5,
-                    cell_11: 12.5,
-                    cell_12: 12.5,
-                },
-            ],
-            data3: [
-                {
-                    cell_13: 12.5,
-                    cell_14: 12.5,
-                    cell_15: 12.5,
-                    cell_16: 12.5,
-                    cell_17: 12.5,
-                    cell_18: 12.5,
-                },
-            ],
-            data4: [
-                {
-                    cell_19: 12.5,
-                    cell_20: 12.5,
-                    cell_21: 12.5,
-                    cell_22: 12.5,
-                    cell_23: 12.5,
-                    cell_24: 12.5,
-                },
-            ],
+            data1: data.data_1,
+            data2: data.data_2,
+            data3: data.data_3,
+            data4: data.data_4,
         }
     },
     methods: {
         getData() {
+            // eslint-disable-next-line camelcase
+            let data_1 = [{
+                    cell_1: 0,
+                    cell_2: 0,
+                    cell_3: 0,
+                    cell_4: 0,
+                    cell_5: 0,
+                    cell_6: 0,
+                    // eslint-disable-next-line camelcase
+                }], data_2 = [{
+                    cell_7: 0,
+                    cell_8: 0,
+                    cell_9: 0,
+                    cell_10: 0,
+                    cell_11: 0,
+                    cell_12: 0,
+                    // eslint-disable-next-line camelcase
+                }], data_3 = [{
+                    cell_13: 0,
+                    cell_14: 0,
+                    cell_15: 0,
+                    cell_16: 0,
+                    cell_17: 0,
+                    cell_18: 0,
+                    // eslint-disable-next-line camelcase
+                }], data_4 = [{
+                    cell_19: 0,
+                    cell_20: 0,
+                    cell_21: 0,
+                    cell_22: 0,
+                    cell_23: 0,
+                    cell_24: 0,
+                }]
+
+            let maxTemp = [], minTemp = [], maxVoltage = [], minVoltage = [], maxCurrent = [], minCurrent = []
+
+            data_1[0].cell_1 = this.data[6].fields.cell_1
+            data_1[0].cell_2 = this.data[6].fields.cell_2
+            data_1[0].cell_3 = this.data[6].fields.cell_3
+            data_1[0].cell_4 = this.data[6].fields.cell_4
+            data_1[0].cell_5 = this.data[6].fields.cell_5
+            data_1[0].cell_6 = this.data[6].fields.cell_6
+
+            data_2[0].cell_7 = this.data[6].fields.cell_7
+            data_2[0].cell_8 = this.data[6].fields.cell_8
+            data_2[0].cell_9 = this.data[6].fields.cell_9
+            data_2[0].cell_10 = this.data[6].fields.cell_10
+            data_2[0].cell_11 = this.data[6].fields.cell_11
+            data_2[0].cell_12 = this.data[6].fields.cell_12
+
+            data_3[0].cell_13 = this.data[6].fields.cell_13
+            data_3[0].cell_14 = this.data[6].fields.cell_14
+            data_3[0].cell_15 = this.data[6].fields.cell_15
+            data_3[0].cell_16 = this.data[6].fields.cell_16
+            data_3[0].cell_17 = this.data[6].fields.cell_17
+            data_3[0].cell_18 = this.data[6].fields.cell_18
+
+            data_4[0].cell_19 = this.data[6].fields.cell_19
+            data_4[0].cell_20 = this.data[6].fields.cell_20
+            data_4[0].cell_21 = this.data[6].fields.cell_21
+            data_4[0].cell_22 = this.data[6].fields.cell_22
+            data_4[0].cell_23 = this.data[6].fields.cell_23
+            data_4[0].cell_24 = this.data[6].fields.cell_24
+
+            for (let i = 0; i < this.data.length; i++) {
+                maxTemp.push(this.data[i].fields.max_cell_tem)
+                minTemp.push(this.data[i].fields.min_cell_tem)
+                maxVoltage.push(this.data[i].fields.max_cell_vol)
+                minVoltage.push(this.data[i].fields.min_cell_vol)
+                maxCurrent.push(this.data[i].fields.max_cell_cur)
+                minCurrent.push(this.data[i].fields.min_cell_cur)
+            }
+
+            let res = {
+                data_1,
+                data_2,
+                data_3,
+                data_4,
+                maxTemp,
+                minTemp,
+                maxVoltage,
+                minVoltage,
+                maxCurrent,
+                minCurrent,
+            }
+
+            return res
         },
     },
 }
