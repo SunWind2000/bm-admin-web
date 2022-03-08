@@ -91,7 +91,19 @@ npm run build
 ```js
 publicPath: './',
 ```
+#### 若node提示需要安装其他插件，请运行以下命令尝试
+```
+npm install -g @vue/cli
 
+npm install -g @vue/cli-service
+
+npm install -g @vue/cli-plugin-babel
+
+npm install -g @vue/cli-plugin-eslint
+
+npm install -g @vue/cli-plugin-unit-jest
+```
+  
 #### 配套的后端项目地址
 [battery-monitor](https://github.com/SunWind2000/battery-monitor)
 
