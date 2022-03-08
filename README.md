@@ -1,5 +1,7 @@
 # 基于Vue的轻量级电池监控管理系统
 
+**该分支为纯前端项目预览分支，执行<u>第三部分</u>中的指令即可在本地预览**
+
 ### 一、相关依赖
 * [vue-router](https://router.vuejs.org/zh/)
 * [iview](https://www.iviewui.com/docs/guide/install)
