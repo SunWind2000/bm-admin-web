@@ -339,7 +339,7 @@ export default {
             switch (name) {
                 case '1':
                     // 修改密码
-                    this.gotoPage('password')
+                    this.gotoPage('userinfo')
                     break
                 case '2':
                     // 基本资料

@@ -4,17 +4,17 @@
         <div class="xdc-title" id="xdc-title">
             <h3 style="text-align: center">电池列阵</h3>
         </div>
-        <div id="xdc-main">
+        <div>
             <Row type="flex" justify="space-around" v-for="n in rowNUM" :key="n">
-                <div
-                    @click="clickXdc(i+(n-1)*colNUM)"
-                    v-for="i in (n*colNUM>dataTotalNum)?(dataTotalNum%8):(colNUM)"
-                    :key="i + (n-1)*colNUM"
-                >
-                    <Col span="6" class="xdc-content">
+                    <Col
+                        span="6"
+                        class="xdc-content"
+                        v-for="i in (n*colNUM>dataTotalNum)?(dataTotalNum%rowNUM):(colNUM)"
+                        :key="i + (n-1)*colNUM"
+                    >
                         <span style="color: #20222A;text-align: center">蓄电池{{ i + (n-1)*colNUM }}</span>
+                        <img :src="imgUrl" class="xdc-img" @click="clickXdc(i+(n-1)*colNUM)" />
                     </Col>
-                </div>
             </Row>
         </div>
     </div>
@@ -47,6 +47,7 @@ export default {
             rowNUM: Math.ceil(xdcDataFri.length / 8), // 蓄电池列阵的行数
             dataTotalNum: xdcDataFri.length, // 蓄电池列阵中包含的蓄电池总数
             xdcDataNum: this.clickXdc, // 蓄电池编号
+            imgUrl: require('../assets/imgs/xdc.png'),
         }
     },
     methods: {
@@ -80,7 +81,7 @@ export default {
     height: 10%;
 }
 .xdc-content {
-    background-image: url("../assets/imgs/xdc.png");
+    /*background-image: url("../assets/imgs/xdc.png");*/
     background-repeat: no-repeat;
     background-size: 100%;
     opacity: 100%;
@@ -94,7 +95,11 @@ export default {
     color: white;
     font-size: 1.5vh;
 }
-.xdc-content:hover {
+.xdc-img {
+    height: 90px;
+    width: 90px
+}
+.xdc-img:hover {
     opacity: 100%;
     box-shadow:
          0 0.1px 0.7px skyblue,
