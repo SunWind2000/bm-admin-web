@@ -2,7 +2,9 @@
 
 ### 项目预览地址
 
-[https://demo.ives.ltd/](https://demo.ives.ltd/)  
+[http://demo.ives.ltd/](http://demo.ives.ltd/)  
+
+**该分支为纯前端项目预览分支，执行<u>第三部分</u>中的指令即可在本地预览**  
 
 ### 一、相关依赖
 * [vue-router](https://router.vuejs.org/zh/)
