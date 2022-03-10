@@ -1,5 +1,8 @@
 # 基于Vue的轻量级电池监控管理系统
 
+### 纯前端效果预览地址
+[http://demo.ives.ltd/](http://demo.ives.ltd/)  
+
 ### 一、相关依赖
 * [vue-router](https://router.vuejs.org/zh/)
 * [iview](https://www.iviewui.com/docs/guide/install)
