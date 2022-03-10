@@ -1,6 +1,6 @@
 # 基于Vue的轻量级电池监控管理系统
 
-### 项目预览地址
+### 纯前端效果预览地址
 
 [http://demo.ives.ltd/](http://demo.ives.ltd/)  
 

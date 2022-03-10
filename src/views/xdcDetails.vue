@@ -32,12 +32,6 @@ export default {
     components: {
         LineChart,
     },
-    props: {
-        order: { // 蓄电池编号
-            type: Number,
-            required: true,
-        },
-    },
     data() {
         const Columns1 = []
         const Columns2 = []
