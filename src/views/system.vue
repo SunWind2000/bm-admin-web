@@ -6,15 +6,16 @@
         </div>
         <div>
             <Row type="flex" justify="space-around" v-for="n in rowNUM" :key="n">
-                    <Col
-                        span="6"
-                        class="xdc-content"
-                        v-for="i in (n*colNUM>dataTotalNum)?(dataTotalNum%rowNUM):(colNUM)"
-                        :key="i + (n-1)*colNUM"
-                    >
+                <div
+                    @click="clickXdc(i+(n-1)*colNUM)"
+                    v-for="i in (n*colNUM>dataTotalNum)?(dataTotalNum%rowNUM):(colNUM)"
+                    :key="i + (n-1)*colNUM"
+                >
+                    <Col span="6" class="xdc-content">
                         <span style="color: #20222A;text-align: center">蓄电池{{ i + (n-1)*colNUM }}</span>
-                        <img :src="imgUrl" class="xdc-img" @click="clickXdc(i+(n-1)*colNUM)" />
+                        <img :src="imgUrl" class="xdc-img" />
                     </Col>
+                </div>
             </Row>
         </div>
     </div>
