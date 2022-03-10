@@ -11,9 +11,10 @@
                     v-for="i in (n*colNUM>dataTotalNum)?(dataTotalNum%8):(colNUM)"
                     :key="i + (n-1)*colNUM"
                 >
-                    <Col span="6" class="xdc-content">
+                    <i-col span="6" class="xdc-content">
                         <span style="color: #20222A;text-align: center">蓄电池{{ i + (n-1)*colNUM }}</span>
-                    </Col>
+                        <img :src="imgUrl" class="xdc-img" />
+                    </i-col>
                 </div>
             </Row>
         </div>
@@ -49,6 +50,7 @@ export default {
             rowNUM: Math.ceil(localStorage.getItem('battery_num') / 8), // 蓄电池列阵的行数
             dataTotalNum: localStorage.getItem('battery_num'), // 蓄电池列阵中包含的蓄电池总数
             xdcData: data,
+            imgUrl: require('../assets/imgs/xdc.png')
         }
     },
     methods: {
