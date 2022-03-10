@@ -98,10 +98,10 @@ export default {
     height: 10%;
 }
 .xdc-content {
-    background-image: url("../assets/imgs/xdc.png");
+    /*background-image: url("../assets/imgs/xdc.png");*/
     background-repeat: no-repeat;
     background-size: 100%;
-    opacity: 100%;
+    opacity: inherit;
     transition: 0.5s ease;
     cursor: pointer;
     position: relative;
@@ -109,11 +109,15 @@ export default {
     width: 100px;
     height: 100px;
     margin: 10px;
-    color: white;
+    color: #2f54eb;
     font-size: 1.5vh;
 }
-.xdc-content:hover {
-    opacity: 100%;
+.xdc-img {
+    height: 90px;
+    width: 90px
+}
+.xdc-img:hover {
+    opacity: inherit;
     box-shadow:
          0 0.1px 0.7px skyblue,
          0 0.1px 1.7px skyblue,
