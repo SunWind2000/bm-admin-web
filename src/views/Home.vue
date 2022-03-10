@@ -7,13 +7,13 @@
             </Row>
             <Row :gutter="10">
                 <Col :xs="24" :sm="24" :lg="8">
-                    <div class="chart-wrapper"><guage /></div>
+                    <div class="chart-wrapper"><guage :value="value" /></div>
                 </Col>
                 <Col :xs="24" :sm="24" :lg="8">
-                    <div class="chart-wrapper"><bar-chart /></div>
+                    <div class="chart-wrapper"><bar-chart :data="tempData" /></div>
                 </Col>
                 <Col :xs="24" :sm="24" :lg="8">
-                    <div class="chart-wrapper"><graph /></div>
+                    <div class="chart-wrapper"><graph :data="totalVol" /></div>
                 </Col>
             </Row>
         </div>
@@ -47,20 +47,14 @@ let lineChartData = {
     },
 }
 
-getDashboardData().then(response => {
-    for (let i = 0; i < response.data.data.length; i++) {
-        lineChartData.voltage.maxData.push(response.data.data[i].fields.max_voltage)
-        lineChartData.voltage.minData.push(response.data.data[i].fields.min_voltage)
-        lineChartData.current.maxData.push(response.data.data[i].fields.max_current)
-        lineChartData.current.minData.push(response.data.data[i].fields.min_current)
-        lineChartData.temperature.maxData.push(response.data.data[i].fields.max_temperature)
-        lineChartData.temperature.minData.push(response.data.data[i].fields.min_temperature)
-        lineChartData.num.maxData.push(response.data.data[i].fields.battery_num)
-        if (i === response.data.data.length - 1) {
-            localStorage.setItem('battery_num', response.data.data[i].fields.battery_num)
-        }
-    }
-})
+let totalVolData = []
+
+let socValue = []
+
+let temp = {
+    maxData: [],
+    minData: [],
+}
 
 export default {
     name: 'home',
@@ -74,7 +68,35 @@ export default {
     data() {
         return {
             lineChartData: lineChartData.voltage,
+            totalVol: totalVolData,
+            value: socValue,
+            tempData: temp,
         }
+    },
+    mounted() {
+        getDashboardData().then(response => {
+            for (let i = 0; i < response.data.data.length; i++) {
+                lineChartData.voltage.maxData.push(response.data.data[i].fields.max_voltage)
+                lineChartData.voltage.minData.push(response.data.data[i].fields.min_voltage)
+                lineChartData.current.maxData.push(response.data.data[i].fields.max_current)
+                lineChartData.current.minData.push(response.data.data[i].fields.min_current)
+                lineChartData.temperature.maxData.push(response.data.data[i].fields.max_temperature)
+                lineChartData.temperature.minData.push(response.data.data[i].fields.min_temperature)
+                lineChartData.num.maxData.push(response.data.data[i].fields.battery_num)
+                if (i === response.data.data.length - 1) {
+                    localStorage.setItem('battery_num', response.data.data[i].fields.battery_num)
+                }
+            }
+            for (let i = 0; i < response.data.data.length; i++) {
+                totalVolData.push(response.data.data[i].fields.total_voltage)
+            }
+            let last = response.data.data.length - 1
+            socValue.push(response.data.data[last].fields.soc)
+            for (let i = 0; i < response.data.data.length; i++) {
+                temp.maxData.push(response.data.data[i].fields.max_temperature)
+                temp.minData.push(response.data.data[i].fields.min_temperature)
+            }
+        })
     },
     methods: {
         handleSetLineChartData(type) {

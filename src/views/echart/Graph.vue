@@ -6,17 +6,8 @@
 import * as echarts from 'echarts'
 import { debounce } from '../../utils/eladmin_index'
 import { getDatetime } from '../../utils'
-import { getDashboardData } from '../../api'
 
 require('echarts/theme/macarons')
-
-let data = []
-
-getDashboardData().then(response => {
-    for (let i = 0; i < response.data.data.length; i++) {
-        data.push(response.data.data[i].fields.total_voltage)
-    }
-})
 
 export default {
     props: {
@@ -32,11 +23,23 @@ export default {
             type: String,
             default: '300px',
         },
+        data: {
+            type: Array,
+            required: true,
+        },
     },
     data() {
         return {
             chart: null,
         }
+    },
+    watch: {
+        data: {
+            deep: true,
+            handler(val) {
+                this.initChart(val)
+            },
+        },
     },
     mounted() {
         this.initChart()
@@ -66,7 +69,7 @@ export default {
                 xAxisData.push(datetime.pop())
             }
             this.chart = echarts.init(this.$el, 'macarons')
-            const links = data.map((item, i) => ({
+            const links = this.data.map((item, i) => ({
                 source: i,
                 target: i + 1,
             }))
@@ -102,7 +105,7 @@ export default {
                         },
                         edgeSymbol: ['circle', 'arrow'],
                         edgeSymbolSize: [4, 10],
-                        data,
+                        data: this.data,
                         links,
                         lineStyle: {
                             normal: {
