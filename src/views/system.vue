@@ -50,7 +50,7 @@ export default {
             rowNUM: Math.ceil(localStorage.getItem('battery_num') / 8), // 蓄电池列阵的行数
             dataTotalNum: localStorage.getItem('battery_num'), // 蓄电池列阵中包含的蓄电池总数
             xdcData: data,
-            imgUrl: require('../assets/imgs/xdc.png')
+            imgUrl: require('../assets/imgs/xdc.png'),
         }
     },
     methods: {
