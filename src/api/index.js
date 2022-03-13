@@ -57,3 +57,11 @@ export function getBatteryData(batteryId) {
         method: 'GET',
     })
 }
+
+// 获取系统历史错误、报警信息
+export function getSystemHistoryInfo() {
+    return request({
+        url: host + ':' + port + '/system/get-system-history-info',
+        method: 'GET',
+    })
+}

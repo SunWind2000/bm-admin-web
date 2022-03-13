@@ -20,10 +20,9 @@
 </template>
 
 <script>
-// TODO：测试数据，生产环境中需要注释掉
-import historyData from '../testData/testHistoryData'
+import { getSystemHistoryInfo } from '../api'
 
-const mockData = historyData
+let allData = []
 
 export default {
     name: 'history',
@@ -68,8 +67,21 @@ export default {
                 },
             ],
             data1: this.getData(1),
-            dataLength: mockData.length,
+            dataLength: 0,
         }
+    },
+    beforeCreate() {
+        getSystemHistoryInfo().then(response => {
+            this.dataLength = response.data.data.length
+            for (let i = 0; i < this.dataLength; i++) {
+                allData.push({
+                    no: response.data.data[i].pk,
+                    datetime1: response.data.data[i].fields.datetime1,
+                    datetime2: response.data.data[i].fields.datetime2,
+                    details: response.data.data[i].fields.msg,
+                })
+            }
+        })
     },
     methods: {
         // 显示表格数据详情
@@ -85,10 +97,10 @@ export default {
             let data = []
             for (let i = 10 * (currentPage - 1); i < ((10 * currentPage) > this.dataLength ? this.dataLength : (10 * currentPage)); i++) {
                 data.push({
-                    no: mockData[i].no,
-                    datetime1: mockData[i].datetime1,
-                    datetime2: mockData[i].datetime2,
-                    details: mockData[i].details,
+                    no: allData[i].no,
+                    datetime1: allData[i].datetime1,
+                    datetime2: allData[i].datetime2,
+                    details: allData[i].details,
                 })
             }
             return data
