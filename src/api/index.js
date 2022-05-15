@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 
-// 后端接口的主机地址和端口号
-const host = 'http://127.0.0.1'
-const port = '8000'
-
 // 用户头像地址所在文件夹
 export const avatarBaseUrl = host + ':' + port + '/upload/'
 
 // 用户头像上传api地址
 export const uploadApiUrl = host + ':' + port + '/api/upload-user-avatar/'
+
+// 后端接口的主机地址和端口号npm
+const host = 'http://127.0.0.1'
+const port = '8000'
 
 // 获取用户数据
 export function fetchUserData(account, pwd) {

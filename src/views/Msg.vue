@@ -26,7 +26,7 @@
 </template>
 
 <script>
-// TODO: 测试数据，生产环境中需要注释掉
+// DONE: 测试数据，生产环境中需要注释掉
 import mockData from '../testData/testMsgData'
 
 export default {

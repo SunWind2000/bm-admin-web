@@ -3,8 +3,10 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+// 创建路由实例对象
 const commonRoutes = [
     {
+        // 每个路由规则都是一个实例对象，至少包含path、component两个属性
         path: '/login',
         name: 'login',
         meta: { title: '登录' },
@@ -56,6 +58,7 @@ export const asyncRoutes = {
     },
 }
 
+// 创建路由实例对象
 const createRouter = () => new Router({
     routes: commonRoutes,
 })
