@@ -10,11 +10,11 @@
                 <div class="chart-wrapper"><line-chart :maxData="maxTempData" /></div>
             </Col>
             <Col :xs="24" :sm="24" :lg="8">
-                <h3 style="text-align: center">电压变化曲线（V）</h3><br>
+                <h3 style="text-align: center">电压变化曲线（mV）</h3><br>
                 <div class="chart-wrapper"><line-chart :maxData="maxVoltageData" /></div>
             </Col>
             <Col :xs="24" :sm="24" :lg="8">
-                <h3 style="text-align: center">端电流变化曲线（A）</h3><br>
+                <h3 style="text-align: center">端电流变化曲线（mA）</h3><br>
                 <div class="chart-wrapper"><line-chart :maxData="maxCurrentData" /></div>
             </Col>
             <Col :xs="24" :sm="24" :lg="8">
@@ -64,10 +64,10 @@ export default {
             columns1: Columns1,
             data1: [
                 {
-                    voltage: 45,
-                    current: 1,
-                    temperature: '21℃',
-                    soc: '45%',
+                    voltage: '3450mV',
+                    current: '98.8mA',
+                    temperature: '24℃',
+                    soc: '100%',
                 },
             ],
         }

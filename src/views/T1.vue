@@ -7,14 +7,14 @@
                 </Button>
             </div>
             <br>
-            <Table border stripe :columns="columns1" :data="data1"></Table>
+            <Table border stripe :columns="columns1" :data="data1" height="530"></Table>
             <br>
-            <Page
-                :total="dataLength"
-                show-elevator
-                show-total
-                @on-change="changePage"
-            />
+<!--            <Page-->
+<!--                :total="dataLength"-->
+<!--                show-elevator-->
+<!--                show-total-->
+<!--                @on-change="changePage"-->
+<!--            />-->
             <Modal v-model="dialogVisible" width="1000px" title="历史数据详细信息">
                 <p>充放电次数：11</p><p>当前SOH：98.5%</p>
                 <Table border stripe :columns="columns2" :data="data2" height="400"></Table>
@@ -40,6 +40,80 @@ export default {
                     title: '电池编号',
                     key: 'no',
                     sortable: true,
+                    filters: [
+                        {
+                            label: 'No.1',
+                            value: 1,
+                        },
+                        {
+                            label: 'No.2',
+                            value: 2,
+                        },
+                        {
+                            label: 'No.3',
+                            value: 3,
+                        },
+                        {
+                            label: 'No.4',
+                            value: 4,
+                        },
+                        {
+                            label: 'No.5',
+                            value: 5,
+                        },
+                        {
+                            label: 'No.6',
+                            value: 6,
+                        },
+                        {
+                            label: 'No.7',
+                            value: 7,
+                        },
+                        {
+                            label: 'No.8',
+                            value: 8,
+                        },
+                        {
+                            label: 'No.9',
+                            value: 9,
+                        },
+                        {
+                            label: 'No.10',
+                            value: 10,
+                        },
+                        {
+                            label: 'No.11',
+                            value: 11,
+                        },
+                        {
+                            label: 'No.12',
+                            value: 12,
+                        },
+                        {
+                            label: 'No.13',
+                            value: 13,
+                        },
+                        {
+                            label: 'No.14',
+                            value: 14,
+                        },
+                        {
+                            label: 'No.15',
+                            value: 15,
+                        },
+                        {
+                            label: 'No.16',
+                            value: 16,
+                        },
+                    ],
+                    filterMultiple: false,
+                    filterMethod(value, row) {
+                        if (value === 1) {
+                            return row.no === 1
+                        } if (value === 2) {
+                            return row.no === 2
+                        }
+                    },
                 },
                 {
                     align: 'center',
@@ -115,7 +189,8 @@ export default {
                     key: 'soc',
                 },
             ],
-            data1: this.getData(1),
+            // data1: this.getData(1),
+            data1: [],
             data2: historyData2.data,
             dataLength: mockData.length,
             dialogVisible: false,
@@ -167,6 +242,18 @@ export default {
                 })
             }
         },
+    },
+    mounted() {
+        let data = []
+        for (let i = 0; i < mockData.length; i++) {
+            data.push({
+                no: mockData[i].no,
+                datetime1: mockData[i].datetime1,
+                datetime2: mockData[i].datetime2,
+                details: mockData[i].details,
+            })
+        }
+        this.data1 = data
     },
 }
 </script>
