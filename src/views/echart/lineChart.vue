@@ -28,10 +28,6 @@ export default {
             type: Array,
             required: true,
         },
-        minData: {
-            type: Array,
-            required: true,
-        },
     },
     data() {
         return {
@@ -70,38 +66,26 @@ export default {
                 tooltip: {
                     trigger: 'axis',
                 },
-                legend: {
-                    data: ['max', 'min'],
-                },
                 grid: {
                     left: '3%',
                     right: '4%',
                     bottom: '3%',
+                    top: '3%',
                     containLabel: true,
-                },
-                toolbox: {
-                    feature: {
-                        saveAsImage: {},
-                    },
                 },
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: xAxisData,
+                    data: ['20:34:00', '20:34:05', '20:34:06', '20:34:07', '20:34:09', '20:34:14', '20:34:15', '20:34:18'],
                 },
                 yAxis: {
                     type: 'value',
                 },
                 series: [
                     {
-                        name: 'max',
+                        name: '实时数据',
                         type: 'line',
                         data: this.maxData,
-                    },
-                    {
-                        name: 'min',
-                        type: 'line',
-                        data: this.minData,
                     },
                 ],
             })
@@ -109,7 +93,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-
-</style>

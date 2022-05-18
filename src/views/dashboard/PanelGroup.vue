@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统电压</div>
-                    <count-to :start-val="0" :end-val="15.6" :duration="0.1" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="120" :duration="1" class="card-panel-num" />
                 </div>
             </div>
         </Col>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统电流</div>
-                    <count-to :start-val="0" :end-val="0.02" :duration="0.01" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="50" :duration="1" class="card-panel-num" />
                 </div>
             </div>
         </Col>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">系统温度</div>
-                    <count-to :start-val="0" :end-val="65" :duration="1" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="25" :duration="1" class="card-panel-num" />
                 </div>
             </div>
         </Col>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-panel-description">
                     <div class="card-panel-text">电池数量</div>
-                    <count-to :start-val="0" :end-val="100" :duration="1" class="card-panel-num" />
+                    <count-to :start-val="0" :end-val="16" :duration="1" class="card-panel-num" />
                 </div>
             </div>
         </Col>

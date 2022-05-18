@@ -1,0 +1,186 @@
+{
+  "number": 11,
+  "soh": 98.1365,
+  "data": [
+    {
+      "systemTime": "2021-11-22 16:02:11",
+      "relativeTime": 1,
+      "status": "放电",
+      "voltage": 3345.3,
+      "current": -20000,
+      "temperature": 19.9,
+      "capacity": 0,
+      "soc": 1
+    },
+    {
+      "systemTime": "2021-11-22 16:02:12",
+      "relativeTime": 1.01,
+      "status": "放电",
+      "voltage": 3296.4,
+      "current": -19994.6,
+      "temperature": 19.9,
+      "capacity": 2.2,
+      "soc": 0.9999
+    },
+    {
+      "systemTime": "2021-11-22 16:02:20",
+      "relativeTime": 1.16,
+      "status": "放电",
+      "voltage": 3286.3,
+      "current": -20000.5,
+      "temperature": 19.9,
+      "capacity": 51.1,
+      "soc": 0.9995
+    },
+    {
+      "systemTime": "2021-11-22 16:02:30",
+      "relativeTime": 1.32,
+      "status": "放电",
+      "voltage": 3279.3,
+      "current": -20001.6,
+      "temperature": 19.9,
+      "capacity": 106.6,
+      "soc": 0.9989
+    },
+    {
+      "systemTime": "2021-11-22 16:02:40",
+      "relativeTime": 1.49,
+      "status": "放电",
+      "voltage": 3273.8,
+      "current": -19997.7,
+      "temperature": 19.9,
+      "capacity": 162.2,
+      "soc": 0.9984
+    },
+    {
+      "systemTime": "2021-11-22 16:02:50",
+      "relativeTime": 1.66,
+      "status": "放电",
+      "voltage": 3269.4,
+      "current": -20000,
+      "temperature": 19.9,
+      "capacity": 217.7,
+      "soc": 0.9978
+    },
+    {
+      "systemTime": "2021-11-22 16:03:00",
+      "relativeTime": 1.82,
+      "status": "放电",
+      "voltage": 3265.7,
+      "current": -19996,
+      "temperature": 19.9,
+      "capacity": 273.3,
+      "soc": 0.9973
+    },
+    {
+      "systemTime": "2021-11-22 16:03:10",
+      "relativeTime": 1.99,
+      "status": "放电",
+      "voltage": 3262.8,
+      "current": -20001.6,
+      "temperature": 19.9,
+      "capacity": 328.8,
+      "soc": 0.9968
+    },
+    {
+      "systemTime": "2021-11-22 16:03:20",
+      "relativeTime": 2.16,
+      "status": "放电",
+      "voltage": 3260.2,
+      "current": -19997.7,
+      "temperature": 19.9,
+      "capacity": 384.4,
+      "soc": 0.9962
+    },
+    {
+      "systemTime": "2021-11-22 16:03:30",
+      "relativeTime": 2.32,
+      "status": "放电",
+      "voltage": 3258.1,
+      "current": -19996.8,
+      "temperature": 19.9,
+      "capacity": 440,
+      "soc": 0.9957
+    },
+    {
+      "systemTime": "2021-11-22 16:03:40",
+      "relativeTime": 2.49,
+      "status": "放电",
+      "voltage": 3256.4,
+      "current": -19999.7,
+      "temperature": 19.9,
+      "capacity": 495.5,
+      "soc": 0.9951
+    },
+    {
+      "systemTime": "2021-11-22 16:03:50",
+      "relativeTime": 2.66,
+      "status": "放电",
+      "voltage": 3255.1,
+      "current": -20002,
+      "temperature": 19.9,
+      "capacity": 551.1,
+      "soc": 0.9946
+    },
+    {
+      "systemTime": "2021-11-22 16:04:00",
+      "relativeTime": 2.82,
+      "status": "放电",
+      "voltage": 3253.9,
+      "current": -19999,
+      "temperature": 19.9,
+      "capacity": 606.6,
+      "soc": 0.9941
+    },
+    {
+      "systemTime": "2021-11-22 16:04:10",
+      "relativeTime": 2.99,
+      "status": "放电",
+      "voltage": 3253,
+      "current": -20001.6,
+      "temperature": 19.9,
+      "capacity": 662.2,
+      "soc": 0.9935
+    },
+    {
+      "systemTime": "2021-11-22 16:04:20",
+      "relativeTime": 3.16,
+      "status": "放电",
+      "voltage": 3252.3,
+      "current": -20001.7,
+      "temperature": 19.9,
+      "capacity": 717.7,
+      "soc": 0.9930
+    },
+    {
+      "systemTime": "2021-11-22 16:04:30",
+      "relativeTime": 3.32,
+      "status": "放电",
+      "voltage": 3251.7,
+      "current": -20001.7,
+      "temperature": 19.9,
+      "capacity": 773.8,
+      "soc": 0.9924
+    },
+    {
+      "systemTime": "2021-11-22 16:04:40",
+      "relativeTime": 3.49,
+      "status": "放电",
+      "voltage": 3251.3,
+      "current": -20003.8,
+      "temperature": 19.9,
+      "capacity": 828.8,
+      "soc": 0.9919
+    },
+    {
+      "systemTime": "2021-11-22 16:04:50",
+      "relativeTime": 3.66,
+      "status": "放电",
+      "voltage": 3250.8,
+      "current": -20003.8,
+      "temperature": 19.9,
+      "capacity": 884.4,
+      "soc": 0.9914
+    }
+  ]
+}

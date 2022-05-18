@@ -5,17 +5,6 @@
             <Row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
                 <line-chart :chart-data="lineChartData" />
             </Row>
-            <Row :gutter="10">
-                <Col :xs="24" :sm="24" :lg="8">
-                    <div class="chart-wrapper"><guage /></div>
-                </Col>
-                <Col :xs="24" :sm="24" :lg="8">
-                    <div class="chart-wrapper"><bar-chart /></div>
-                </Col>
-                <Col :xs="24" :sm="24" :lg="8">
-                    <div class="chart-wrapper"><graph /></div>
-                </Col>
-            </Row>
         </div>
     </div>
 </template>
@@ -23,14 +12,11 @@
 <script>
 import PanelGroup from './dashboard/PanelGroup'
 import LineChart from './dashboard/LineChart'
-import Guage from './echart/Guage'
-import BarChart from './echart/barChart'
-import Graph from './echart/Graph'
 
 const lineChartData = {
     newVisits: {
-        expectedData: [100, 120, 161, 134, 105, 160, 165],
-        actualData: [120, 82, 91, 154, 162, 140, 145],
+        expectedData: [110, 115, 112, 112, 115, 115, 113],
+        actualData: [50, 49, 50, 52, 48, 50, 51],
     },
     messages: {
         expectedData: [200, 192, 120, 144, 160, 130, 140],
@@ -49,9 +35,6 @@ const lineChartData = {
 export default {
     name: 'home',
     components: {
-        Graph,
-        BarChart,
-        Guage,
         LineChart,
         PanelGroup,
     },

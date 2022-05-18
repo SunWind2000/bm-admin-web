@@ -15,6 +15,10 @@
                 show-total
                 @on-change="changePage"
             />
+            <Modal v-model="dialogVisible" width="1000px" title="历史数据详细信息">
+                <p>充放电次数：11</p><p>当前SOH：98.5%</p>
+                <Table border stripe :columns="columns2" :data="data2" height="400"></Table>
+            </Modal>
         </div>
     </div>
 </template>
@@ -22,6 +26,7 @@
 <script>
 // TODO：测试数据，生产环境中需要注释掉
 import historyData from '../testData/testHistoryData'
+import historyData2 from '../testData/historyData'
 
 const mockData = historyData
 
@@ -32,24 +37,24 @@ export default {
             columns1: [
                 {
                     align: 'center',
-                    title: '故障编号',
+                    title: '电池编号',
                     key: 'no',
                     sortable: true,
                 },
                 {
                     align: 'center',
-                    title: '故障时间',
+                    title: '起始时间',
                     key: 'datetime1',
                 },
                 {
                     align: 'center',
-                    title: '接收时间',
+                    title: '终止时间',
                     key: 'datetime2',
                 },
                 {
                     title: '更多操作',
                     align: 'center',
-                    render: (h, params) => h('div', [
+                    render: (h) => h('div', [
                         h('Button', {
                             props: {
                                 type: 'primary',
@@ -60,25 +65,71 @@ export default {
                             },
                             on: {
                                 click: () => {
-                                    this.show(params.index)
+                                    this.show()
                                 },
                             },
                         }, '查看详情'),
                     ]),
                 },
             ],
+            columns2: [
+                {
+                    align: 'center',
+                    title: '系统时间',
+                    key: 'systemTime',
+                    sortable: true,
+                },
+                {
+                    align: 'center',
+                    title: '相对时间',
+                    key: 'relativeTime',
+                },
+                {
+                    align: 'center',
+                    title: '状态',
+                    key: 'status',
+                },
+                {
+                    align: 'center',
+                    title: '电压',
+                    key: 'voltage',
+                },
+                {
+                    align: 'center',
+                    title: '电流',
+                    key: 'current',
+                },
+                {
+                    align: 'center',
+                    title: '温度',
+                    key: 'temperature',
+                },
+                {
+                    align: 'center',
+                    title: '容量',
+                    key: 'capacity',
+                },
+                {
+                    align: 'center',
+                    title: 'SOC',
+                    key: 'soc',
+                },
+            ],
             data1: this.getData(1),
+            data2: historyData2.data,
             dataLength: mockData.length,
+            dialogVisible: false,
         }
     },
     methods: {
         // 显示表格数据详情
-        show(index) {
-            this.$Modal.info({
-                title: '故障详情',
-                // eslint-disable-next-line max-len
-                content: `编号: ${this.data1[index].no}<br>故障时间: ${this.data1[index].datetime1}<br>接收时间: ${this.data1[index].datetime2}<br>详情: ${this.data1[index].details}`,
-            })
+        show() {
+            if (this.dialogVisible === false) {
+                this.dialogVisible = true
+            } else {
+                this.dialogVisible = false
+            }
+            console.log(historyData2.data)
         },
         // 按页获取数据
         getData(currentPage) {

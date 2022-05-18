@@ -77,6 +77,25 @@ export default {
                         show: false,
                     },
                 },
+                yAxis: [
+                    {
+                        name: '电压（V）',
+                        type: 'value',
+                        min: 0,
+                        max: 200,
+                        splitNumber: 5,
+                    },
+                    {
+                        name: '电流（A）',
+                        type: 'value',
+                        nameLocation: 'start',
+                        alignTicks: true,
+                        inverse: true,
+                        min: 10,
+                        max: 60,
+                        splitNumber: 5,
+                    },
+                ],
                 grid: {
                     left: 10,
                     right: 15,
@@ -91,16 +110,11 @@ export default {
                     },
                     padding: [5, 10],
                 },
-                yAxis: {
-                    axisTick: {
-                        show: false,
-                    },
-                },
                 legend: {
-                    data: ['expected', 'actual'],
+                    data: ['Voltage', 'Current'],
                 },
                 series: [{
-                    name: 'expected',
+                    name: 'Voltage',
                     itemStyle: {
                         normal: {
                             color: '#FF005A',
@@ -117,7 +131,7 @@ export default {
                     animationEasing: 'cubicInOut',
                 },
                 {
-                    name: 'actual',
+                    name: 'Current',
                     smooth: true,
                     type: 'line',
                     itemStyle: {
