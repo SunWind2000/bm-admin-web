@@ -204,7 +204,6 @@ export default {
             } else {
                 this.dialogVisible = false
             }
-            console.log(historyData2.data)
         },
         // 按页获取数据
         getData(currentPage) {
